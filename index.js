@@ -36,7 +36,7 @@ function login()
  
     if(password == "")
     {
-        navigator.notification.alert("Please enter password", null, "Password Missing", "OK");  
+        navigator.notification.alert("Please enter Password", null, "Password Missing", "OK");  
         return;
     }
  
