@@ -1,7 +1,7 @@
 function fetch_and_display_posts()
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/wp-admin/admin-ajax.php?action=posts");
+    xhr.open("GET", "http://beckerhelicopters.com.au/wordpress/wp-admin/admin-ajax.php?action=posts");
     xhr.onload = function(){
         var posts_array = JSON.parse(xhr.responseText);
  
@@ -41,7 +41,7 @@ function login()
     }
  
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/wp-admin/admin-ajax.php?action=login&username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+    xhr.open("GET", "http://beckerhelicopters.com.au/wordpress/wp-admin/admin-ajax.php?action=login&username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
     xhr.onload = function(){
         if(xhr.responseText == "FALSE")
         {
