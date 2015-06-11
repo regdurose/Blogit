@@ -7,41 +7,56 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
         
         
-   <script>
-        document.addEventListener('deviceready', function () {
-    // cordova.plugins.email is now available
-}, false);
-   </script>
-   
-        
-   <script>
-   	cordova.plugins.email.isAvailable(
-    function (isAvailable) {
-        // alert('Service is not available') unless isAvailable;
-    }
-);
-   </script>     
-     
- <script>
- 	cordova.plugins.email.open({
-    to:          Array, // email addresses for TO field
-    cc:          Array, // email addresses for CC field
-    bcc:         Array, // email addresses for BCC field
-    attachments: Array, // file paths or base64 data streams
-    subject:    String, // subject of the email
-    body:       String, // email body (for HTML, set isHtml to true)
-    isHtml:    Boolean, // indicats if the body is HTML or plain text
-}, callback, scope);
- </script>    
-     
 
      
      
         
     </head>
     <body>
+    	
+    <script>
+        document.addEventListener('deviceready', function () {
+    // cordova.plugins.email is now available
+}, false);
+   </script>
+   
         
-<button onclick="cordova.plugins.email.open()">Click me</button>
+  
+     
+ <script>
+function draftEmail(subject, message) {
+    if (!window.plugin){
+        //non-mobile - plugins are not present.
+        alert("Email plugin is not available");  
+        return;
+    }
+    if (!isAvailable){
+        //mobile, but no email installed
+        alert("Email is not available");
+        return;
+    }
+    window.plugin.email.open({
+        to: [], cc: [], bcc: [], attachments: [],
+        subject: subject,
+        body: message,
+        isHtml: true
+    });
+}
+ 
+//runs on application startup, to check for installed email
+var isAvailable = false;
+if (window.plugin){
+    window.plugin.email.isServiceAvailable(
+        function (emailInstalled) {
+            isAvailable = emailInstalled;
+        }
+    );
+}
+ </script>    
+     
+
+        
+<button onclick="draftEmail()">Click me</button>
         
         
         
