@@ -6,9 +6,89 @@
         <title>Sitepoint - PhoneGap App using WordPress</title>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
         
+        
+   <script>
+        document.addEventListener('deviceready', function () {
+    // cordova.plugins.email is now available
+}, false);
+   </script>
+   
+        
+   <script>
+   	cordova.plugins.email.isAvailable(
+    function (isAvailable) {
+        // alert('Service is not available') unless isAvailable;
+    }
+);
+   </script>     
+     
+ <script>
+ 	cordova.plugins.email.open({
+    to:          Array, // email addresses for TO field
+    cc:          Array, // email addresses for CC field
+    bcc:         Array, // email addresses for BCC field
+    attachments: Array, // file paths or base64 data streams
+    subject:    String, // subject of the email
+    body:       String, // email body (for HTML, set isHtml to true)
+    isHtml:    Boolean, // indicats if the body is HTML or plain text
+}, callback, scope);
+ </script>    
+     
+ <script>
+ 	cordova.plugins.email.open(properties, function () {
+    console.log('email view dismissed');
+}, this);
+ 	
+ 	ac
+ </script>    
+     
+     
+     
+        
     </head>
     <body>
-        <div data-role="page">
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--div data-role="page">
             <div data-role="header" data-position="fixed">
                 <h1>Login</h1>
             </div>
@@ -43,6 +123,6 @@
         <script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>-->
     </body>
 </html>
