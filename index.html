@@ -25,16 +25,7 @@
      
  <script>
 function draftEmail(subject, message) {
-    if (!window.plugin){
-        //non-mobile - plugins are not present.
-        alert("Email plugin is not available");  
-        return;
-    }
-    if (!isAvailable){
-        //mobile, but no email installed
-        alert("Email is not available");
-        return;
-    }
+    
     window.plugin.email.open({
         to: [], cc: [], bcc: [], attachments: [],
         subject: subject,
