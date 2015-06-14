@@ -15,48 +15,37 @@
     <body>
     	
     <script>
-        document.addEventListener('deviceready', function () {
+document.addEventListener('deviceready', function () {
     // cordova.plugins.email is now available
 }, false);
    </script>
    
+
+<script>
+cordova.plugins.email.isAvailable(
+    function (isAvailable) {
+        // alert('Service is not available') unless isAvailable;
+    }
+);
+</script>
+
+
         
   
      
  <script>
-function draftEmail(subject, message) {
-    if (!cordova.plugin){
-        //non-mobile - plugins are not present.
-        alert("Email plugin is not available");  
-        return;
-    }
-    if (!isAvailable){
-        //mobile, but no email installed
-        alert("Email is not available");
-        return;
-    }
-    cordova.plugin.email.open({
-        to: [], cc: [], bcc: [], attachments: [],
-        subject: subject,
-        body: message,
-        isHtml: true
-    });
-}
- 
-//runs on application startup, to check for installed email
-var isAvailable = false;
-if (cordova.plugin){
-    cordova.plugin.email.isServiceAvailable(
-        function (emailInstalled) {
-            isAvailable = emailInstalled;
-        }
-    );
-}
+cordova.plugins.email.open({
+    to:      'max@mustermann.de',
+    cc:      'erika@mustermann.de',
+    bcc:     ['john@doe.com', 'jane@doe.com'],
+    subject: 'Greetings',
+    body:    'How are you? Nice greetings from Leipzig'
+});
  </script>    
      
 
 <button onclick="function()">deviceready</button>        
-<button onclick="draftEmail()">Click me</button>
+<button onclick="cordova.plugins.email.open()">Click me</button>
         
         
         
