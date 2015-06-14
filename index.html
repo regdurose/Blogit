@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <title>Sitepoint - PhoneGap App using WordPress</title>
+        <title>Email Test</title>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
         
         
@@ -25,7 +25,7 @@
      
  <script>
 function draftEmail(subject, message) {
-    if (!window.plugin){
+    if (!cordova.plugin){
         //non-mobile - plugins are not present.
         alert("Email plugin is not available");  
         return;
@@ -35,7 +35,7 @@ function draftEmail(subject, message) {
         alert("Email is not available");
         return;
     }
-    window.plugin.email.open({
+    cordova.plugin.email.open({
         to: [], cc: [], bcc: [], attachments: [],
         subject: subject,
         body: message,
@@ -45,8 +45,8 @@ function draftEmail(subject, message) {
  
 //runs on application startup, to check for installed email
 var isAvailable = false;
-if (window.plugin){
-    window.plugin.email.isServiceAvailable(
+if (cordova.plugin){
+    cordova.plugin.email.isServiceAvailable(
         function (emailInstalled) {
             isAvailable = emailInstalled;
         }
@@ -54,7 +54,8 @@ if (window.plugin){
 }
  </script>    
      
-
+EmailComposer.prototype.showEmailComposer = 
+function(subject,body,toRecipients,ccRecipients,bccRecipients,bIsHTML)
         
 <button onclick="draftEmail()">Click me</button>
         
