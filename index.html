@@ -7,14 +7,41 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
         
         
-
+    <script>
+function email_form()
+{
+/* get message body */
+	preference = document.forms['myform'].myoptions.value;
+	thetext = document.forms['myform'].mytextarea.value;
+	user_name = document.forms['myform'].mytextbox.value;
+	if(document.forms['myform'].check1.checked){ is_checked1 = " is "; } else { is_checked1 = " is not "; }
+	if(document.forms['myform'].check2.checked){ is_checked2 = " is "; } else { is_checked2 = " is not "; }
+	if(document.forms['myform'].check3.checked){ is_checked3 = " is "; } else { is_checked3 = " is not "; }
+	check1_pref = document.forms['myform'].check1.value;
+	check2_pref = document.forms['myform'].check2.value;
+	check3_pref = document.forms['myform'].check3.value;
+/* set subject and body */
+	body = "Thank you for your time and service.  Please verify the following information: \n";
+	subject = user_name + "'s info";
+	body += user_name + " has selected " + preference + " from the drop down menu.\n" +
+	"[" + check1_pref + "]" + is_checked1 + "checked.\n" +
+	"[" + check2_pref + "]" + is_checked2 + "checked.\n" +
+	"[" + check3_pref + "]" + is_checked3 + "checked.\n\n" +
+	user_name + " has also added:\n" +
+	thetext;
+/* make subject and body proper hyper links */
+	subject = encodeURI(subject);
+	body = encodeURI(body);
+	window.location.href="mailto:reg@thecomputerpeople.com.au?subject=" + subject + "&body=" + body;
+}
+</script>
      
      
         
     </head>
     <body>
     	
-    <script>
+    <!--<script>
         document.addEventListener('deviceready', function () {
     // cordova.plugins.email is now available
 }, false);
@@ -58,7 +85,40 @@ if (cordova.plugin){
  <button onclick="function()">device ready</button>        
 <button onclick="draftEmail()">Click me</button>
         
-    <a href="mailto:reg@thecomputerpeople.com.au?&subject=Test&body=I Works">Send mail with cc, bcc, subject and body</a>    
+    <a href="mailto:reg@thecomputerpeople.com.au?&subject=Test&body=I Works">Send mail</a>-->
+    
+
+
+This is a test:<br>
+<form name="myform">
+<table cellpadding="20"><tr><td valign="top">
+<b>Please choose your preference:</b>
+<br>
+<select name="myoptions">
+	<option value="option1">option1</option>
+	<option value="option2">option2</option>
+	<option value="option3">option3</option>
+</select>
+<br>
+<br>
+<br><input type="checkbox" name="check1" value="Important option one" checked> Important option one
+<br><input type="checkbox" name="check2" value="Slightly less important option two"> Slightly less important option two
+<br><input type="checkbox" name="check3" value="Decidedly less important option three"> Decidedly less important option three
+
+</td>
+<td>
+<textarea cols="20" rows="10" name="mytextarea">Enter something here.</textarea>
+<br>
+<br>
+<b>Please enter your name:</b>
+<br>
+<input type="text" maxlength="20" size="30" value="Last name, First" name="mytextbox">
+<br>
+</td></tr></table>
+<br>
+<input type="button" value="submit" onclick="email_form(); return false;">
+
+</form>    
         
         
         
