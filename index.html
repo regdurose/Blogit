@@ -14,7 +14,7 @@
     </head>
     <body>
     	
-    <!--<script>
+    <script>
         document.addEventListener('deviceready', function () {
     // cordova.plugins.email is now available
 }, false);
@@ -58,50 +58,14 @@ if (cordova.plugin){
  <button onclick="function()">device ready</button>        
 <button onclick="draftEmail()">Click me</button>
         
-    <a href="mailto:reg@thecomputerpeople.com.au?&subject=Test&body=Yo">Send mail with cc, bcc, subject and body</a>  -->
-    
-      
- <form action="" method="post">
-    <input type="submit" value="Send details to embassy" />
-    <input type="hidden" name="button_pressed" value="1" />
-</form>
-
-<?php
-
-if(isset($_POST['button_pressed']))
-{
-    $to      = 'reg@thecomputerpeople.com.au';
-    $subject = 'the subject';
-    $message = 'Yo';
-    $headers = 'From: reg@thecomputerpeople.com.au' . "\r\n" .
-        'Reply-To: reg@thecomputerpeople.com.au . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-
-    mail($to, $subject, $message, $headers);
-
-    echo 'Email Sent.';
-}
-
-?>       
-        
-<script>        
-   function sendemail()
-{
-    var url = '/mail.php';
-
-    new Ajax.Request(url,{
-            onComplete:function(transport)
-            {
-                var feedback = transport.responseText.evalJSON();
-                if(feedback.result==0)
-                    alert('There was a problem sending the email, please try again.');
-            }
-        });
-
-}     
+    <a href="mailto:reg@thecomputerpeople.com.au?&subject=Test&body=I Works">Send mail with cc, bcc, subject and body</a>    
         
         
-  </script>      
+        
+        
+        
+        
+        
         
         
         
