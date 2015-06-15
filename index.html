@@ -25,8 +25,17 @@
      
  <script>
 function draftEmail(subject, message) {
-    
-    window.plugin.email.open({
+    if (!cordova.plugin){
+        //non-mobile - plugins are not present.
+        alert("Email plugin is not available");  
+        return;
+    }
+    if (!isAvailable){
+        //mobile, but no email installed
+        alert("Email is not available");
+        return;
+    }
+    cordova.plugin.email.open({
         to: [], cc: [], bcc: [], attachments: [],
         subject: subject,
         body: message,
@@ -36,8 +45,8 @@ function draftEmail(subject, message) {
  
 //runs on application startup, to check for installed email
 var isAvailable = false;
-if (window.plugin){
-    window.plugin.email.isServiceAvailable(
+if (cordova.plugin){
+    cordova.plugin.email.isServiceAvailable(
         function (emailInstalled) {
             isAvailable = emailInstalled;
         }
@@ -49,7 +58,7 @@ if (window.plugin){
  <button onclick="function()">device ready</button>        
 <button onclick="draftEmail()">Click me</button>
         
-        
+    <a href="mailto:reg@thecomputerpeople.com.au?&subject=Test&body=Yo">Send mail with cc, bcc, subject and body</a>    
         
         
         
