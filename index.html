@@ -167,9 +167,7 @@ $(document).ready(function(){
 					+ item.longitude+'</p>';
 
 					output.append(landmark);
-					 alert('<h1>'+item.name+'</h1>'
-					+ '<p>'+item.latitude+'<br>'
-					+ item.longitude+'</p>');
+					 alert( item.longitude);
 				});
 			},
 			error: function(){
@@ -186,7 +184,7 @@ $(document).ready(function(){
 	
 	dataRequest();
 });
-alert("This is landmark" + landmark);
+
 </script>
 
     
