@@ -167,7 +167,9 @@ $(document).ready(function(){
 					+ item.longitude+'</p>';
 
 					output.append(landmark);
-					 alert( landmark);
+					 alert('<h1>'+item.name+'</h1>'
+					+ '<p>'+item.latitude+'<br>'
+					+ item.longitude+'</p>');
 				});
 			},
 			error: function(){
