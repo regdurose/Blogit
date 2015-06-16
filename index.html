@@ -130,46 +130,35 @@ if (cordova.plugin){
 
 </head>
 <body>
-    <div data-role="page" data-theme="a" id="page1">
-        <div data-theme="a" data-role="header">
-            <h3>
-                Header
-            </h3>
-        </div>
-        <div data-role="content">
-            <div data-role="fieldcontain">
-                <form action="showView.php" method="POST">
-                <label for="selectmenu1">
-                    Select a show:
-                </label>
-                <select name="selectmenu1" id="select_a_show">
-                	
-                	
-<?php
-$con = mysql_connect('localhost','thecompu','9mgrsJeb','thecompu_genesis');
-
-if (!$con)
-{
-    die('Could not connect: ' . mysql_error());
-}
-
-mysql_select_db('thecompu_genesis', $con);
-
-$queryStr = 'SELECT * FROM MAC';      
-$result = mysql_query($queryStr);
-while($row = mysql_fetch_array($result))
-{
-    $Time_Slot = $row['Time_Slot'];
-    echo "<option value=" . $Time_Slot . ">Time " . $Time_Slot . "</option>";
-} 
-mysql_close($con);
-?>
-        </select>
-                <input type="submit" value="Submit" />
-            </form>
-            </div>
-        </div>
-    </div>
+    
+    <script>
+    $(document).ready(function(){
+	var output = $('#output');
+	
+	$.ajax({
+		url: 'www.thecompu@thecomputerpeople.com.au/public_html/landmarks.php',
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+			$.each(data, function(i,item){ 
+				var landmark = '<h1>'+item.name+'</h1>'
+				+ '<p>'+item.latitude+'<br>'
+				+ item.longitude+'</p>';
+				
+				output.append(landmark);
+			});
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+});
+    
+    </script>
+    
+   
+    
 </body>
 
 
