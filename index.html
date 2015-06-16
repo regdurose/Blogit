@@ -140,11 +140,13 @@ if (cordova.plugin){
 $(document).ready(function(){
 	$(document).bind('deviceready', function(){
 		onDeviceReady();
+		 alert( "Device ready" );
 	});
 	
 	function yourCallback(button) {
 		if (button == 2) {
 			dataRequest();
+			 alert( "Data request" );
 		}
 	}
 	
@@ -165,6 +167,7 @@ $(document).ready(function(){
 					+ item.longitude+'</p>';
 
 					output.append(landmark);
+					 alert( "Append landmark" );
 				});
 			},
 			error: function(){
