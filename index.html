@@ -162,11 +162,14 @@ $(document).ready(function(){
 				output.empty();
 				
 				$.each(data, function(i,item){ 
-					var bb = '<h1>'+ item.Question +'</h1>' + '<p>'+ item.Answer1 +'<br>' + item.Correct1 + '<br>'+ item.Answer2 +'<br>'+ item.Correct2 +'</p>';
+					var bboard = '<h1>'+ item.Question +'</h1>' + '<p>'+ item.Answer1 +'<br>' + item.Correct1 + '<br>'+ item.Answer2 +'<br>'+ item.Correct2 +'</p>';
 
-					output.append(blackboard);
+					output.append(bboard);
+					
 					  alert( '<h1>'+ item.Question +'</h1>' + '<p>'+ item.Answer1 +'<br>' + item.Correct1 + '<br>'+ item.Answer2 +'<br>'+ item.Correct2 +'</p>');
 				});
+				
+				
 			},
 			error: function(){
 				output.text('There was an error loading the data.');
