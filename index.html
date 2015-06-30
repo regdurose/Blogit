@@ -154,7 +154,7 @@ $(document).ready(function(){
 		var output = $('#output').text('Loading data...');
 
 		$.ajax({
-			url: 'http://thecomputerpeople.com.au/landmarks.php',
+			url: 'http://thecomputerpeople.com.au/blackboard.php',
 			dataType: 'jsonp',
 			jsonp: 'jsoncallback',
 			timeout: 5000,
@@ -162,14 +162,10 @@ $(document).ready(function(){
 				output.empty();
 				
 				$.each(data, function(i,item){ 
-					var landmark = '<h1>'+item.name+'</h1>'
-					+ '<p>'+item.latitude+'<br>'
-					+ item.longitude+'</p>';
+					var bb = '<h1>'+ item.Question +'</h1>' + '<p>'+ item.Answer1 +'<br>' + item.Correct1 + '<br>'+ item.Answer2 +'<br>'+ item.Correct2 +'</p>';
 
-					output.append(landmark);
-					 alert( '<h1>'+item.name+'</h1>'
-					+ '<p>'+item.latitude+'<br>'
-					+ item.longitude+'</p>');
+					output.append(blackboard);
+					  alert( '<h1>'+ item.Question +'</h1>' + '<p>'+ item.Answer1 +'<br>' + item.Correct1 + '<br>'+ item.Answer2 +'<br>'+ item.Correct2 +'</p>');
 				});
 			},
 			error: function(){
